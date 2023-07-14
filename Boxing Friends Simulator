@@ -1,0 +1,228 @@
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=507120
+--Go vouch release thread : https://v3rmillion.net/showthread.php?tid=1040650
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+
+local w = library:CreateWindow("🥊Boxing Friend Sim") -- Creates the window
+
+local b = w:CreateFolder("Farming") -- Creates the folder(U will put here your buttons,etc)
+
+local c = w:CreateFolder("Pets") -- Creates the folder(U will put here your buttons,etc)
+
+local d = w:CreateFolder("Misc") -- Creates the folder(U will put here your buttons,etc)
+
+local e = w:CreateFolder("Credits") -- Creates the folder(U will put here your buttons,etc)
+
+_G.autoTap = false
+_G.autoRebirth = false
+_G.buyFreeHuge = false
+_G.autoKnuckles = false
+_G.autoWin = false
+_G.autoCraft = false
+_G.equipBest = false
+_G.antiAfk = false
+_G.autoSpin = false
+_G.autoChest = false
+
+local remotePath = game:GetService("ReplicatedStorage").Events
+
+d:DestroyGui()
+
+function autoTap()
+    spawn(function()
+        while _G.autoTap do
+            local args = { [1] = "WeightTool" }
+            remotePath.Weight:FireServer(unpack(args))
+            wait()
+        end
+    end)
+end
+
+function autoWin()
+    spawn(function()
+        while _G.autoWin do
+            remotePath.NPC:FireServer("Kill", "Level 20")
+            wait()
+        end
+    end)
+end
+
+function autoKnuckles()
+    spawn(function()
+        while _G.autoKnuckles do
+            remotePath.Knuckle:FireServer("27")
+            wait()
+        end
+    end)
+end
+
+function autoRebirth()
+    spawn(function()
+        while _G.autoRebirth do
+            remotePath.Rebirth:FireServer()
+            wait()
+        end
+    end)
+end
+
+function buyEgg()
+    spawn(function()
+        while wait() do
+            if not _G.buyFreeHuge then break end
+            remotePath.HatchEgg:InvokeServer("FreeHuge", 1)
+        end
+    end)
+end
+
+function autoCraft()
+    spawn(function()
+        while _G.autoCraft do
+        local args = { [1] = "Craft All" }
+        remotePath.PetAction:InvokeServer(unpack(args))
+            wait()
+        end
+    end)
+end
+
+function antiAfk()
+    spawn(function()
+        while _G.antiAfk == true do
+            local Players = game:GetService("Players")
+            local GC = getconnections or get_signal_cons
+            if GC then
+                for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
+                    if v["Disable"] then
+                        v["Disable"](v)
+                    elseif v["Disconnect"] then
+                        v["Disconnect"](v)
+                    end
+                end
+            else
+                Players.LocalPlayer.Idled:Connect(function()
+                    local VirtualUser = game:GetService("VirtualUser")
+                    VirtualUser:CaptureController()
+                    VirtualUser:ClickButton2(Vector2.new())
+                end)
+            end
+            wait(10)
+        end
+    end)
+end
+
+antiAfk()
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character
+        if character and character:FindFirstChild("Humanoid") and character.Humanoid.MoveDirection.Magnitude > 0 then
+            character:TranslateBy(character.Humanoid.MoveDirection * TargetWalkspeed/50)
+        end
+    end)
+end)
+
+function autoSpin()
+    spawn(function()
+        while _G.autoSpin do       game:GetService("ReplicatedStorage").Events["Spin Wheel"]:FireServer()
+            wait(2)
+        end
+    end)
+end
+
+function autoChest()
+    spawn(function()
+        while _G.autoChest do
+            for i, v in pairs(game:GetService("Workspace").Oduller:GetDescendants()) do
+                if v:IsA("BillboardGui") then
+                    v:Destroy()
+                end
+                if v:IsA("MeshPart") then
+                    if v.Name == "PadShop" then
+                        v.Transparency = 1
+                        v.CFrame = Zort.Character.RightFoot.CFrame
+                    end
+                end
+            end
+            wait()
+        end
+    end)
+end
+
+b:Toggle("Auto Biceps", function(bool)
+    _G.autoTap = bool
+    print('Auto Tap Is: ', bool)
+    if bool then
+        autoTap()
+    end
+end)
+
+b:Toggle("Auto Knuckles", function(bool)
+    _G.autoKnuckles = bool
+    print('Auto Knuckles Is: ', bool)
+    if bool then
+        autoKnuckles()
+    end
+end)
+
+b:Toggle("Auto Wins", function(bool)
+    _G.autoWin = bool
+    print('Auto Win Is: ', bool)
+    if bool then
+        autoWin()
+    end
+end)
+
+b:Toggle("Auto Rebirth", function(bool)
+    _G.autoRebirth = bool
+    print('Auto Rebirth Is: ', bool)
+    if bool then
+        autoRebirth()
+    end
+end)
+
+c:Toggle("Free Huge", function(bool)
+    _G.buyFreeHuge = bool
+    print('Free Huge Is: ', bool)
+    if bool then
+        buyEgg()
+    end
+end)
+
+c:Toggle("Craft All", function(bool)
+    _G.autoCraft = bool
+    print('Auto Craft All Is: ', bool)
+    if bool then
+        autoCraft()
+    end
+end)
+
+d:Toggle("Auto Spin", function(bool)
+    _G.autoSpin = bool
+    print('Auto Spin Is: ', bool)
+    if bool then
+        autoSpin()
+    end
+end)
+
+d:Toggle("Auto Chest", function(bool)
+    _G.autoChest = bool
+    print('Auto Chest Is: ', bool)
+    if bool then
+        autoChest()
+    end
+end)
+
+d:Toggle("Anti Afk", function(bool)
+    _G.autoAFK = bool
+    print('Anti Afk Is: ', bool)
+    if bool then
+        autoAfk()
+    end
+end)
+
+e:Label("Pakring110",{
+    TextSize = 25; -- Self Explaining
+    TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+    BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    
+}) 
