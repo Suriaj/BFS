@@ -12,28 +12,28 @@ _G.fastAutoHatch = false
 _G.autoCraft = false
 _G.autoChest = false
 _G.antiAfk = false
-_G.autoChest = false
 _G.autoSpin = false
 _G.autoCrasher = false
 _G.autoWinsFast = false
+_G.autoEquip = false
 
 -- Functions
 
-function autoWins()
-    while _G.autoWins == true do
+function autoWinsFast()
+    while _G.autoWinsFast == true do
         repeat 
              task.wait()
         game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill", "Level 20")
-        until not _G.autoWins
+        until not _G.autoWinsFast
         task.wait()
     end
 end
-autoWins()
+autoWinsFast()
 
-function autoWinsFast()
-    while _G.autoWinsFast == true do
+function autoWins()
+    while _G.autoWins == true do
         game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill", "Level 20")
-        task.wait(1)
+        task.wait(2)
     end
 end
 
@@ -58,6 +58,14 @@ function autoCraft()
 
 game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Craft All")
         task.wait()
+    end
+end
+
+function autoEquip()
+    while _G.autoEquip == true do
+   
+game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Equip Best")
+        task.wait(2)
     end
 end
 
@@ -233,7 +241,7 @@ local Section = EggTab:AddSection({
     Name = "Eggs"
 })
 
-MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅Added Inf FreeHuge Egg\n✅Added Inf Event Egg OP\n✅Better Auto Win\n✅Added Inf Pet Equip (visual)\n✅Added Egg Tracker\n✅More Being Added Soon")
+MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅Added Inf FreeHuge Egg\n✅Added Inf Event Egg OP\n✅Better Auto Win\n✅Added Auto Equip Best\n✅Added Inf Pet Equip (visual)\n✅Added Egg Tracker\n✅More Being Added Soon")
 MainTab:AddParagraph("Script made by!","Pakring110")
 MainTab:AddButton({
     Name = "Discord Server Comming Soon!",
@@ -371,6 +379,17 @@ local Section = EggTab:AddSection({
 })
 
 EggTab:AddToggle({
+    Name = "Auto Equip Best",
+    Default = false,
+    Callback = function(Value)
+        _G.autoEquip = Value
+        if Value then
+            autoEquip()
+        end
+    end    
+})
+
+EggTab:AddToggle({
     Name = "Auto Craft",
     Default = false,
     Callback = function(Value)
@@ -379,6 +398,10 @@ EggTab:AddToggle({
             autoCraft()
         end
     end    
+})
+
+local Section = EggTab:AddSection({
+    Name = "Pets - Visual"
 })
 
 EggTab:AddButton({
