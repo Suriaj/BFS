@@ -185,7 +185,7 @@ function autoSpin()
     end
 end
 
-function autocrasher()
+function autoCrasher()
 	while _G.autoCrasher == true do
 		local ohBoolean1 = true
 		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
