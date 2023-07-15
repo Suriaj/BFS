@@ -15,6 +15,7 @@ _G.antiAfk = false
 _G.autoChest = false
 _G.autoSpin = false
 _G.autoCrasher = false
+_G.autoWinsFast = false
 
 -- Functions
 
@@ -28,6 +29,13 @@ function autoWins()
     end
 end
 autoWins()
+
+function autoWinsFast()
+    while _G.autoWinsFast == true do
+        game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill", "Level 20")
+        task.wait(1)
+    end
+end
 
 function autoRebirth()
     while _G.autoRebirth == true do
@@ -222,10 +230,10 @@ local Section = MainTab:AddSection({
 })
     
 local Section = EggTab:AddSection({
-    Name = "Pets - Eggs"
+    Name = "Eggs"
 })
 
-MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅Added Auto Event Egg OP\n✅Better Auto Win\n✅More Being Added Soon")
+MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅Added Inf FreeHuge Egg\n✅Added Inf Event Egg OP\n✅Better Auto Win\n✅Added Inf Pet Equip (visual)\n✅Added Egg Tracker\n✅More Being Added Soon")
 MainTab:AddParagraph("Script made by!","Pakring110")
 MainTab:AddButton({
     Name = "Discord Server Comming Soon!",
@@ -236,6 +244,7 @@ MainTab:AddButton({
 
 CrTab:AddParagraph("Script Info","This script is made By the King 👑Pakring110👑")
 
+FarmTab:AddParagraph("Note:","Double farm not really work Imao")
 
 EggTab:AddDropdown({
 	  Name = "Select egg",
@@ -285,6 +294,21 @@ FarmTab:AddToggle({
             autoBiceps()
         end
     end    
+})
+
+FarmTab:AddToggle({
+    Name = "Inf Wins",
+    Default = false,
+    Callback = function(Value)
+        _G.autoWinsFast = Value
+        if Value then
+            autoWinsFast()
+        end
+    end    
+})
+
+local Section = FarmTab:AddSection({
+    Name = "Farm - Combo"
 })
 
 FarmTab:AddToggle({
@@ -343,7 +367,7 @@ EggTab:AddToggle({
 })
 
 local Section = EggTab:AddSection({
-    Name = "Pets - Craft"
+    Name = "Pets"
 })
 
 EggTab:AddToggle({
@@ -355,6 +379,56 @@ EggTab:AddToggle({
             autoCraft()
         end
     end    
+})
+
+EggTab:AddButton({
+	Name = "Equip inf Pets (visual)",
+	Callback = function()
+for i, v in pairs(game:GetService("Players").LocalPlayer.Pets:GetDescendants()) do
+    if v.Name == "Equipped" then
+        v.Value = true
+    end
+end
+  	end    
+})
+
+EggTab:AddButton({
+	Name = "Unequip inf Pets (visual)",
+	Callback = function()
+for i, v in pairs(game:GetService("Players").LocalPlayer.Pets:GetDescendants()) do
+    if v.Name == "Equipped" then
+        v.Value = false
+    end
+end
+  	end    
+})
+
+EggTab:AddButton({
+	Name = "Egg Tracker",
+	Callback = function()
+        local textlab = Instance.new("TextLabel")
+        textlab.Size = UDim2.new(0, 200, 0, 28)
+        textlab.BackgroundTransparency = 1
+        textlab.TextColor3 = Color3.new(1, 1, 1)
+        textlab.TextStrokeTransparency = 0
+        textlab.TextStrokeColor3 = Color3.new(0.24, 0.24, 0.24)
+        textlab.Font = Enum.Font.SourceSans
+        textlab.TextSize = 28
+        textlab.Text = "1 Egg Hatched"
+        textlab.BackgroundColor3 = Color3.new(0, 0, 0)
+        textlab.Position = UDim2.new(1, -254, 0, -33)
+        textlab.TextXAlignment = Enum.TextXAlignment.Right
+        textlab.BorderSizePixel = 0
+        textlab.Parent = game.CoreGui.RobloxGui
+        spawn(function()
+            repeat
+                wait(1)
+                local Egg = tonumber(game:GetService("Players").LocalPlayer.Data.HatchedEggs.Value)
+                Egg = math.floor(Egg)
+                textlab.Text = Egg.." Eggs Hatched"
+            until textlab == nil
+        end)
+  	end    
 })
 
 local Section = MiscTab:AddSection({
