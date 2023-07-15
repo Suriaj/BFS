@@ -17,31 +17,22 @@ _G.autoSpin = false
 _G.autoCrasher = false
 
 -- Functions
-function autoBiceps()
-    while _G.autoBiceps == true do
-        game:GetService("ReplicatedStorage").Events.Weight:FireServer("WeightTool")
-        wait()
-    end
-end
-
-function autoKnuckles()
-    while _G.autoKnuckles == true do
-        game:GetService("ReplicatedStorage").Events.Knuckle:FireServer("27")
-        wait()
-    end
-end
 
 function autoWins()
     while _G.autoWins == true do
+        repeat 
+             task.wait()
         game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill", "Level 20")
-        wait(1)
+        until not _G.autoWins
+        task.wait()
     end
 end
+autoWins()
 
 function autoRebirth()
     while _G.autoRebirth == true do
         game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
-        wait(.1)
+        task.wait()
     end
 end
 
@@ -50,7 +41,7 @@ function tripleAutoHatch()
 local ohString1 = _G.selectEgg
 local ohNumber2 = 3
 game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
-        wait()
+        task.wait()
     end
 end
 
@@ -58,7 +49,7 @@ function autoCraft()
     while _G.autoCraft == true do
 
 game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Craft All")
-        wait()
+        task.wait()
     end
 end
 
@@ -67,7 +58,23 @@ function autoHatch()
 local ohString1 = _G.selectEgg
 local ohNumber2 = 1
 game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
-        wait()
+        task.wait()
+    end
+end
+
+function autoKnuckles()
+    while _G.autoKnuckles == true do
+local ohString1 = _G.selectBag
+game:GetService("ReplicatedStorage").Events.Knuckle:FireServer(ohString1)
+        task.wait()
+    end
+end
+
+function autoBiceps()
+    while _G.autoBiceps == true do
+
+game:GetService("ReplicatedStorage").Events.Weight:FireServer("WeightTool")
+        task.wait()
     end
 end
 
@@ -103,7 +110,7 @@ game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohN
 local ohString1 = _G.selectEgg
 local ohNumber2 = 1
 game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
-        wait()
+        task.wait()
     end
 end
 
@@ -218,7 +225,7 @@ local Section = EggTab:AddSection({
     Name = "Pets - Eggs"
 })
 
-MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅More Being Added Soon")
+MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅Added Auto Event Egg OP\n✅Better Auto Win\n✅More Being Added Soon")
 MainTab:AddParagraph("Script made by!","Pakring110")
 MainTab:AddButton({
     Name = "Discord Server Comming Soon!",
@@ -226,18 +233,49 @@ MainTab:AddButton({
         setclipboard("Soon")
     end    
 })
-FarmTab:AddParagraph("Note:","✅Must Have 35m Knuckles to use Inf Knuckles\n❎Don't used all at the same time")
+
+CrTab:AddParagraph("Script Info","This script is made By the King 👑Pakring110👑")
+
 
 EggTab:AddDropdown({
 	  Name = "Select egg",
   	Default = "FreeHuge",
-  	Options = {"FreeHuge", "Basic", "Town", "Beach", "Desert", "Crystal", "Forest", "Hell", "Cat"},
+  	Options = {"FreeHuge", "Event", "Basic", "Town", "Beach", "Desert", "Crystal", "Forest", "Hell"},
   	Callback = function(Value)
     _G.selectEgg = Value
 	end    
 })
 
 -- Toggles
+
+local Section = FarmTab:AddSection({
+    Name = "Farm - Knuckles"
+})
+
+FarmTab:AddDropdown({
+	  Name = "Select Bag",
+  	Default = "1",
+  	Options = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27"},
+  	Callback = function(Value)
+    _G.selectBag = Value
+	end    
+})
+
+FarmTab:AddToggle({
+    Name = "Auto Knuckles",
+    Default = false,
+    Callback = function(Value)
+        _G.autoKnuckles = Value
+        if Value then
+            autoKnuckles()
+        end
+    end    
+})
+
+local Section = FarmTab:AddSection({
+    Name = "Other - Farm"
+})
+
 FarmTab:AddToggle({
     Name = "Auto Biceps",
     Default = false,
@@ -250,18 +288,7 @@ FarmTab:AddToggle({
 })
 
 FarmTab:AddToggle({
-    Name = "Inf Knuckles",
-    Default = false,
-    Callback = function(Value)
-        _G.autoKnuckles = Value
-        if Value then
-            autoKnuckles()
-        end
-    end    
-})
-
-FarmTab:AddToggle({
-    Name = "Inf Wins",
+    Name = "Auto Wins",
     Default = false,
     Callback = function(Value)
         _G.autoWins = Value
