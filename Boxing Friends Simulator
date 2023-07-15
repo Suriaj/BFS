@@ -1,228 +1,396 @@
---Made by : https://v3rmillion.net/member.php?action=profile&uid=507120
---Go vouch release thread : https://v3rmillion.net/showthread.php?tid=1040650
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({IntroText = "👑Suriaj Hub👑", Name = "🥊Boxing Friend Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "👑Suriaj👑"})
 
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
-
-local w = library:CreateWindow("🥊Boxing Friend Sim") -- Creates the window
-
-local b = w:CreateFolder("Farming") -- Creates the folder(U will put here your buttons,etc)
-
-local c = w:CreateFolder("Pets") -- Creates the folder(U will put here your buttons,etc)
-
-local d = w:CreateFolder("Misc") -- Creates the folder(U will put here your buttons,etc)
-
-local e = w:CreateFolder("Credits") -- Creates the folder(U will put here your buttons,etc)
-
-_G.autoTap = false
-_G.autoRebirth = false
-_G.buyFreeHuge = false
+-- Value
+_G.autoBiceps = false
 _G.autoKnuckles = false
-_G.autoWin = false
+_G.autoWins = false
+_G.autoRebirth = false
+_G.autoTripleHatch = false
+_G.autoHatch = false
+_G.fastAutoHatch = false
 _G.autoCraft = false
-_G.equipBest = false
-_G.antiAfk = false
-_G.autoSpin = false
 _G.autoChest = false
+_G.antiAfk = false
+_G.autoChest = false
+_G.autoSpin = false
+_G.autoCrasher = false
 
-local remotePath = game:GetService("ReplicatedStorage").Events
-
-d:DestroyGui()
-
-function autoTap()
-    spawn(function()
-        while _G.autoTap do
-            local args = { [1] = "WeightTool" }
-            remotePath.Weight:FireServer(unpack(args))
-            wait()
-        end
-    end)
-end
-
-function autoWin()
-    spawn(function()
-        while _G.autoWin do
-            remotePath.NPC:FireServer("Kill", "Level 20")
-            wait()
-        end
-    end)
+-- Functions
+function autoBiceps()
+    while _G.autoBiceps == true do
+        game:GetService("ReplicatedStorage").Events.Weight:FireServer("WeightTool")
+        wait()
+    end
 end
 
 function autoKnuckles()
-    spawn(function()
-        while _G.autoKnuckles do
-            remotePath.Knuckle:FireServer("27")
-            wait()
-        end
-    end)
+    while _G.autoKnuckles == true do
+        game:GetService("ReplicatedStorage").Events.Knuckle:FireServer("27")
+        wait()
+    end
+end
+
+function autoWins()
+    while _G.autoWins == true do
+        game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill", "Level 20")
+        wait(1)
+    end
 end
 
 function autoRebirth()
-    spawn(function()
-        while _G.autoRebirth do
-            remotePath.Rebirth:FireServer()
-            wait()
-        end
-    end)
+    while _G.autoRebirth == true do
+        game:GetService("ReplicatedStorage").Events.Rebirth:FireServer()
+        wait(.1)
+    end
 end
 
-function buyEgg()
-    spawn(function()
-        while wait() do
-            if not _G.buyFreeHuge then break end
-            remotePath.HatchEgg:InvokeServer("FreeHuge", 1)
-        end
-    end)
+function tripleAutoHatch()
+    while _G.tripleAutoHatch == true do
+local ohString1 = _G.selectEgg
+local ohNumber2 = 3
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+        wait()
+    end
 end
 
 function autoCraft()
-    spawn(function()
-        while _G.autoCraft do
-        local args = { [1] = "Craft All" }
-        remotePath.PetAction:InvokeServer(unpack(args))
-            wait()
+    while _G.autoCraft == true do
+    local args = { [1] = "Craft All" }
+game:GetService("ReplicatedStorage").PetAction:InvokeServer(unpack(args))
+        wait()
+    end
+end
+
+function autoHatch()
+    while _G.autoHatch == true do
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+        wait()
+    end
+end
+
+function fastAutoHatch()
+    while _G.fastAutoHatch == true do
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+local ohString1 = _G.selectEgg
+local ohNumber2 = 1
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
+        wait()
+    end
+end
+
+function autoChest()
+    while _G.autoChest == true do
+        for i, v in pairs(game:GetService("Workspace").Oduller:GetDescendants()) do
+            if v:IsA("BillboardGui") then
+                v:Destroy()
+            end
+            if v:IsA("MeshPart") then
+                if v.Name == "PadShop" then
+                    v.Transparency = 1
+                    v.CFrame = Zort.Character.RightFoot.CFrame
+                end
+            end
         end
-    end)
+        wait()
+    end
 end
 
 function antiAfk()
-    spawn(function()
-        while _G.antiAfk == true do
-            local Players = game:GetService("Players")
-            local GC = getconnections or get_signal_cons
-            if GC then
-                for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
-                    if v["Disable"] then
-                        v["Disable"](v)
-                    elseif v["Disconnect"] then
-                        v["Disconnect"](v)
-                    end
-                end
-            else
-                Players.LocalPlayer.Idled:Connect(function()
-                    local VirtualUser = game:GetService("VirtualUser")
-                    VirtualUser:CaptureController()
-                    VirtualUser:ClickButton2(Vector2.new())
-                end)
-            end
-            wait(10)
-        end
-    end)
+    while _G.antiAfk == true do
+    Players = game:GetService("Players")
+	local GC = getconnections or get_signal_cons
+	if GC then
+		for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
+			if v["Disable"] then
+				v["Disable"](v)
+			elseif v["Disconnect"] then
+				v["Disconnect"](v)
+			end
+		end
+	else
+		Players.LocalPlayer.Idled:Connect(function()
+			local VirtualUser = game:GetService("VirtualUser")
+			VirtualUser:CaptureController()
+			VirtualUser:ClickButton2(Vector2.new())
+		end)
+	end
+wait(10)
 end
-
-antiAfk()
+end
 
 game:GetService("RunService").RenderStepped:Connect(function()
     pcall(function()
-        local player = game.Players.LocalPlayer
-        local character = player.Character
-        if character and character:FindFirstChild("Humanoid") and character.Humanoid.MoveDirection.Magnitude > 0 then
-            character:TranslateBy(character.Humanoid.MoveDirection * TargetWalkspeed/50)
+        if game.Players.LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 then
+            game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character.Humanoid.MoveDirection * TargetWalkspeed/50)
         end
     end)
 end)
 
 function autoSpin()
-    spawn(function()
-        while _G.autoSpin do       game:GetService("ReplicatedStorage").Events["Spin Wheel"]:FireServer()
-            wait(2)
-        end
-    end)
+    while _G.autoSpin == true do
+		game:GetService("ReplicatedStorage").Events["Spin Wheel"]:FireServer()
+        wait(2)
+    end
 end
 
-function autoChest()
-    spawn(function()
-        while _G.autoChest do
-            for i, v in pairs(game:GetService("Workspace").Oduller:GetDescendants()) do
-                if v:IsA("BillboardGui") then
-                    v:Destroy()
-                end
-                if v:IsA("MeshPart") then
-                    if v.Name == "PadShop" then
-                        v.Transparency = 1
-                        v.CFrame = Zort.Character.RightFoot.CFrame
-                    end
-                end
-            end
-            wait()
-        end
-    end)
+function autocrasher()
+	while _G.autoCrasher == true do
+		local ohBoolean1 = true
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		game:GetService("ReplicatedStorage").Combat.Events["Burning Punch"]:FireServer(ohBoolean1)
+		wait()
+	end
 end
 
-b:Toggle("Auto Biceps", function(bool)
-    _G.autoTap = bool
-    print('Auto Tap Is: ', bool)
-    if bool then
-        autoTap()
-    end
-end)
-
-b:Toggle("Auto Knuckles", function(bool)
-    _G.autoKnuckles = bool
-    print('Auto Knuckles Is: ', bool)
-    if bool then
-        autoKnuckles()
-    end
-end)
-
-b:Toggle("Auto Wins", function(bool)
-    _G.autoWin = bool
-    print('Auto Win Is: ', bool)
-    if bool then
-        autoWin()
-    end
-end)
-
-b:Toggle("Auto Rebirth", function(bool)
-    _G.autoRebirth = bool
-    print('Auto Rebirth Is: ', bool)
-    if bool then
-        autoRebirth()
-    end
-end)
-
-c:Toggle("Free Huge", function(bool)
-    _G.buyFreeHuge = bool
-    print('Free Huge Is: ', bool)
-    if bool then
-        buyEgg()
-    end
-end)
-
-c:Toggle("Craft All", function(bool)
-    _G.autoCraft = bool
-    print('Auto Craft All Is: ', bool)
-    if bool then
-        autoCraft()
-    end
-end)
-
-d:Toggle("Auto Spin", function(bool)
-    _G.autoSpin = bool
-    print('Auto Spin Is: ', bool)
-    if bool then
-        autoSpin()
-    end
-end)
-
-d:Toggle("Auto Chest", function(bool)
-    _G.autoChest = bool
-    print('Auto Chest Is: ', bool)
-    if bool then
-        autoChest()
-    end
-end)
-
-d:Toggle("Anti Afk", function(bool)
-    _G.autoAFK = bool
-    print('Anti Afk Is: ', bool)
-    if bool then
-        autoAfk()
-    end
-end)
-
-e:Label("Pakring110",{
-    TextSize = 25; -- Self Explaining
-    TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-    BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+-- Tabs
+local MainTab = Window:MakeTab({
+    Name = "Home",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local FarmTab = Window:MakeTab({
+    Name = "Farming",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local EggTab = Window:MakeTab({
+    Name = "Pets",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local MiscTab = Window:MakeTab({
+    Name = "Misc",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local CrTab = Window:MakeTab({
+    Name = "Credits",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local Section = MainTab:AddSection({
+    Name = "Home - Update Log"
+})
     
-}) 
+local Section = EggTab:AddSection({
+    Name = "Pets - Eggs"
+})
+
+MainTab:AddParagraph("Update Log","✅Script Release\n✅Auto Farm\n✅Auto Hatch\n✅More Being Added Soon")
+MainTab:AddParagraph("Script made by!","Pakring110")
+MainTab:AddButton({
+    Name = "Discord Server Comming Soon!",
+    Callback = function()
+        setclipboard("Soon")
+    end    
+})
+FarmTab:AddParagraph("Note:","✅Must Have 35m Knuckles to use Inf Knuckles\n❎Don't used all at the same time")
+
+EggTab:AddDropdown({
+	  Name = "Select egg",
+  	Default = "FreeHuge",
+  	Options = {"FreeHuge", "Basic", "Town", "Beach", "Desert", "Crystal", "Forest", "Hell", "Cat"},
+  	Callback = function(Value)
+    _G.selectEgg = Value
+	end    
+})
+
+-- Toggles
+FarmTab:AddToggle({
+    Name = "Auto Biceps",
+    Default = false,
+    Callback = function(Value)
+        _G.autoBiceps = Value
+        if Value then
+            autoBiceps()
+        end
+    end    
+})
+
+FarmTab:AddToggle({
+    Name = "Inf Knuckles",
+    Default = false,
+    Callback = function(Value)
+        _G.autoKnuckles = Value
+        if Value then
+            autoKnuckles()
+        end
+    end    
+})
+
+FarmTab:AddToggle({
+    Name = "Inf Wins",
+    Default = false,
+    Callback = function(Value)
+        _G.autoWins = Value
+        if Value then
+            autoWins()
+        end
+    end    
+})
+
+FarmTab:AddToggle({
+    Name = "Auto Rebirth",
+    Default = false,
+    Callback = function(Value)
+        _G.autoRebirth = Value
+        if Value then
+            autoRebirth()
+        end
+    end    
+})
+
+EggTab:AddToggle({
+    Name = "Triple Hatch(gamepass needed)",
+    Default = false,
+    Callback = function(Value)
+        _G.autoTripleHatch = Value
+        if Value then
+            autoTripleHatch()
+        end
+    end    
+})
+
+EggTab:AddToggle({
+    Name = "Auto Hatch",
+    Default = false,
+    Callback = function(Value)
+        _G.autoHatch = Value
+        if Value then
+            autoHatch()
+        end
+    end    
+})
+
+EggTab:AddToggle({
+    Name = "Fast Auto Hatch",
+    Default = false,
+    Callback = function(Value)
+        _G.fastAutoHatch = Value
+        if Value then
+            fastAutoHatch()
+        end
+    end    
+})
+
+local Section = EggTab:AddSection({
+    Name = "Pets - Craft"
+})
+
+EggTab:AddToggle({
+    Name = "Auto Craft",
+    Default = false,
+    Callback = function(Value)
+        _G.autoCraft = Value
+        if Value then
+            autoCraft()
+        end
+    end    
+})
+
+local Section = MiscTab:AddSection({
+    Name = "Auto Claim"
+})
+
+MiscTab:AddToggle({
+    Name = "Auto Chest",
+    Default = false,
+    Callback = function(Value)
+        _G.autoChest = Value
+        if Value then
+            autoChest()
+        end
+    end    
+})
+
+MiscTab:AddToggle({
+    Name = "Auto Spin",
+    Default = false,
+    Callback = function(Value)
+        _G.autoSpin = Value
+        if Value then
+            autoSpin()
+        end
+    end    
+})
+
+local Section = MiscTab:AddSection({
+    Name = "Other Exploit"
+})
+
+MiscTab:AddButton({
+	Name = "Unlock All Gamepasses",
+	Callback = function()
+    for i, v in pairs(Zort.Data:GetChildren()) do
+    if v.Value == false or nil then
+    v.Value = true
+    end
+  	end
+    end
+})
+
+MiscTab:AddToggle({
+    Name = "Anti Afk",
+    Default = false,
+    Callback = function(Value)
+        _G.antiAfk = Value
+        if Value then
+            antiAfk()
+        end
+    end    
+})
+
+MiscTab:AddToggle({
+    Name = "Crash Server",
+    Default = false,
+    Callback = function(Value)
+        _G.autoCrasher = Value
+        if Value then
+            autoCrasher()
+        end
+    end    
+})
+
+OrionLib:Init()
