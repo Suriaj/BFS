@@ -33,7 +33,7 @@ autoWinsFast()
 function autoWins()
     while _G.autoWins == true do
         game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill", "Level 20")
-        task.wait(2)
+        task.wait(1)
     end
 end
 
