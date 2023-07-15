@@ -56,8 +56,8 @@ end
 
 function autoCraft()
     while _G.autoCraft == true do
-    local args = { [1] = "Craft All" }
-game:GetService("ReplicatedStorage").PetAction:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Events.PetAction:InvokeServer("Craft All")
         wait()
     end
 end
