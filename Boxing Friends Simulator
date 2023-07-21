@@ -45,7 +45,7 @@ function autoRebirth()
 end
 
 function autoTripleHatch()
-    while _G.tripleAutoHatch == true do
+    while _G.autoTripleHatch == true do
 local ohString1 = _G.selectEgg
 local ohNumber2 = 3
 game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(ohString1, ohNumber2)
