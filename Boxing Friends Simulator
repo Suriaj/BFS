@@ -44,7 +44,7 @@ function autoRebirth()
     end
 end
 
-function tripleAutoHatch()
+function autoTripleHatch()
     while _G.tripleAutoHatch == true do
 local ohString1 = _G.selectEgg
 local ohNumber2 = 3
@@ -342,7 +342,7 @@ FarmTab:AddToggle({
 })
 
 EggTab:AddToggle({
-    Name = "Triple Hatch(gamepass needed)",
+    Name = "Triple Hatch (gamepass needed)",
     Default = false,
     Callback = function(Value)
         _G.autoTripleHatch = Value
