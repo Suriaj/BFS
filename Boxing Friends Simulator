@@ -374,6 +374,13 @@ EggTab:AddToggle({
     end    
 })
 
+EggTab:AddButton({
+	Name = "Fast Hatch Egg",
+	Callback = function()
+game:GetService("Players").LocalPlayer.Data.HatchSpeed.Value = math.huge
+  	end    
+})
+
 local Section = EggTab:AddSection({
     Name = "Pets"
 })
